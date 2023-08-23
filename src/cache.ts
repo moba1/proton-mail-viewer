@@ -12,6 +12,8 @@ const osCacheDirectory = () => {
         "Library",
         "Caches",
       );
+    case process.platform === 'win32':
+      return process.env.LOCALAPPDATA;
     default:
       throw new UnsupportedOsError();
   }
