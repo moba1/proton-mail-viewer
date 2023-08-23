@@ -1,4 +1,5 @@
 import { app, BrowserWindow, shell } from 'electron';
+import path from 'path';
 import * as cache from './cache';
 import { isNodeError } from './error';
 
@@ -33,6 +34,10 @@ const createWindow = (): void => {
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
+    icon:
+      process.platform !== 'linux'
+        ? undefined
+        : 'images/icons/proton-mail-viewer-icon_512x512.png',
   });
 
   mainWindow.webContents.setWindowOpenHandler(({ url: urlString }) => {

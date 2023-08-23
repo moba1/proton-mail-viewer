@@ -9,16 +9,34 @@ import { WebpackPlugin } from '@electron-forge/plugin-webpack';
 import { mainConfig } from './webpack.main.config';
 import { rendererConfig } from './webpack.renderer.config';
 
+import path from 'path';
+
+const iconDirectory = path.join(__dirname, 'images', 'icons');
+
 const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
+    icon:
+      process.platform === 'win32'
+        ? path.join(iconDirectory, 'proton-mail-viewer-icon_256x256.ico')
+        : process.platform === 'darwin'
+        ? path.join(iconDirectory, 'proton-mail-viewer-icon_512x512.png')
+        : undefined,
   },
   rebuildConfig: {},
   makers: [
     new MakerSquirrel({}),
     new MakerZIP({}),
-    new MakerRpm({}),
-    new MakerDeb({}),
+    new MakerRpm({
+      options: {
+        icon: path.join(iconDirectory, 'proton-mail-viewer-icon_512x512.png'),
+      },
+    }),
+    new MakerDeb({
+      options: {
+        icon: path.join(iconDirectory, 'proton-mail-viewer-icon_512x512.png'),
+      },
+    }),
   ],
   plugins: [
     new AutoUnpackNativesPlugin({}),
