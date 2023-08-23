@@ -1,1 +1,1 @@
-export { UnsupportedOsError } from "./unsupported-os";
+export { UnsupportedOsError } from './unsupported-os';
