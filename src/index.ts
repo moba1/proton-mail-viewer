@@ -35,7 +35,6 @@ const createWindow = (): void => {
   });
 
   mainWindow.webContents.setWindowOpenHandler(({ url: urlString }) => {
-    console.log(urlString);
     const url = new URL(urlString);
     if (url.host !== "mail.proton.me") {
       shell.openExternal(urlString);
