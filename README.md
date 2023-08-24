@@ -10,7 +10,7 @@ This client is unofficial & open source Proton Mail™ client.
 First, install npm package,
 
 ```bash
-npm i --frozen-lockfle
+npm i --frozen-lockfile
 ```
 
 and run client.
