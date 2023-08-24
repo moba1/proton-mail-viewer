@@ -1,7 +1,7 @@
 {
   "name": "proton-mail-viewer",
   "productName": "proton-mail-viewer",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "unofficial proton mail viewer app",
   "main": ".webpack/main",
   "scripts": {
