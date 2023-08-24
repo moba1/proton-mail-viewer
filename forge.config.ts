@@ -27,16 +27,22 @@ const config: ForgeConfig = {
   makers: [
     new MakerSquirrel({}),
     new MakerZIP({}),
-    new MakerRpm({
-      options: {
-        icon: path.join(iconDirectory, 'proton-mail-viewer-icon_512x512.png'),
+    new MakerRpm(
+      {
+        options: {
+          icon: path.join(iconDirectory, 'proton-mail-viewer-icon_512x512.png'),
+        },
       },
-    }),
-    new MakerDeb({
-      options: {
-        icon: path.join(iconDirectory, 'proton-mail-viewer-icon_512x512.png'),
+      ['linux']
+    ),
+    new MakerDeb(
+      {
+        options: {
+          icon: path.join(iconDirectory, 'proton-mail-viewer-icon_512x512.png'),
+        },
       },
-    }),
+      ['linux']
+    ),
   ],
   plugins: [
     new AutoUnpackNativesPlugin({}),
