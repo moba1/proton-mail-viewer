@@ -1,8 +1,8 @@
 import type { ForgeConfig } from '@electron-forge/shared-types';
-import { MakerSquirrel } from '@electron-forge/maker-squirrel';
 import { MakerZIP } from '@electron-forge/maker-zip';
 import { MakerDeb } from '@electron-forge/maker-deb';
 import { MakerRpm } from '@electron-forge/maker-rpm';
+import { MakerWix } from '@electron-forge/maker-wix';
 import { AutoUnpackNativesPlugin } from '@electron-forge/plugin-auto-unpack-natives';
 import { WebpackPlugin } from '@electron-forge/plugin-webpack';
 
@@ -25,8 +25,7 @@ const config: ForgeConfig = {
   },
   rebuildConfig: {},
   makers: [
-    new MakerSquirrel({}),
-    new MakerZIP({}),
+    new MakerZIP({}, ['linux', 'darwin']),
     new MakerRpm(
       {
         options: {
@@ -43,6 +42,7 @@ const config: ForgeConfig = {
       },
       ['linux']
     ),
+    new MakerWix({}, ['windows']),
   ],
   plugins: [
     new AutoUnpackNativesPlugin({}),
